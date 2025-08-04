@@ -26,6 +26,9 @@ android {
             )
         }
     }
+    buildFeatures {
+        viewBinding = true
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -48,4 +51,6 @@ dependencies {
 
     //lotty animations
     implementation(libs.lottie)
+
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
 }
