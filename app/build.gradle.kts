@@ -1,3 +1,6 @@
+import java.util.Properties
+import java.io.FileInputStream
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -17,18 +20,25 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    val localProperties = Properties()
+    val localPropertiesFile = rootProject.file("local.properties")
+    if(localPropertiesFile.exists()) {
+        localProperties.load(FileInputStream(localPropertiesFile))
+    }
+    defaultConfig{
+        buildConfigField("String", "YOUTUBE_API_KEY", localProperties.getProperty("YOUTUBE_API_KEY"))
+    }
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
         }
     }
     buildFeatures {
         viewBinding = true
     }
+    android.buildFeatures.buildConfig = true
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -53,4 +63,15 @@ dependencies {
     implementation(libs.lottie)
 
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
+
+    // Retrofit for API calls
+    implementation(libs.retrofit.v290)
+    implementation(libs.converter.gson.v290)
+
+    // Glide for image loading
+    implementation(libs.glide)
+
+    // YouTube Player Library
+    implementation(libs.core)
+    implementation("com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.2")
 }
