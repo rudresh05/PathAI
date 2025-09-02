@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Home" android:id="@+id/homeId" android:icon="@drawable/icon_home" />
+    <item android:title="Search" android:id="@+id/searchId" android:icon="@drawable/icon_search" />
+    <item android:title="Courses" android:id="@+id/courseId" android:icon="@drawable/icon_courses" />
+    <item android:title="Quizz"  android:id="@+id/quizId" android:icon="@drawable/icon_puzzle" />
+    <item android:title="Profile" android:id="@+id/profileId" android:icon="@drawable/icon_user" />
+</menu>

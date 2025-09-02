@@ -23,16 +23,18 @@ class MainViewModel : ViewModel() {
      * Yeh ek naya public function hai jise MainActivity call karegi
      * jab user kuch search karega.
      */
-    fun searchVideos(query: String) {
+    fun searchVideos(query: String){
+
         // viewModelScope ek coroutine launch karta hai, yaani yeh kaam background mein hoga.
         viewModelScope.launch {
             _isLoading.value = true // API call se pehle loading shuru karo
 
             // Repository se real data fetch karo
-            val videoList = repository.searchVideos(query)
+           val videoList = repository.searchVideos(query)
             _videos.value = videoList // LiveData ko naye data se update karo
 
             _isLoading.value = false // API call poora hone ke baad loading band karo
         }
+
     }
 }
