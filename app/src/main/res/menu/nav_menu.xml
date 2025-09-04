@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" tools:showIn="navigation_view">
+    <group android:checkableBehavior="single">
+        <item android:icon="@drawable/home" android:title="Home"/>
+        <item android:icon="@drawable/news" android:title="News"/>
+        <item android:icon="@drawable/tranding" android:title="Tranding"/>
+        <item android:icon="@drawable/movie" android:title="Movies"/>
+        <item android:icon="@drawable/music" android:title="Music"/>
+        <item android:icon="@drawable/subscription" android:title="Subscription"/>
+        <item android:icon="@drawable/library" android:title="Library"/>
+        <item android:icon="@drawable/sport" android:title="Sport"/>
+        <!--         <item android:icon="@drawable/history" android:title="History"/> -->
+        <!--         <item android:icon="@drawable/settings" android:title="Settings"/> -->
+        <!--         <item android:icon="@drawable/about" android:title="About"/> -->
+        <!--         <item android:icon="@drawable/help" android:title="Help"/> -->
+        <!--         <item android:icon="@drawable/logout" android:title="Logout"/> -->
+        <!--         <item android:icon="@drawable/share" android:title="Share"/> -->
+        <!--         <item android:icon="@drawable/rate" android:title="Rate"/> -->
+        <!--         <item android:icon="@drawable/more" android:title="More"/> -->
+        <!--         <item android:icon="@drawable/feedback" android:title="Feedback"/> -->
+    </group>
+</menu>
