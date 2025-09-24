@@ -3,8 +3,8 @@
         <item android:icon="@drawable/home" android:title="Home"/>
         <item android:icon="@drawable/news" android:title="News"/>
         <item android:icon="@drawable/tranding" android:title="Tranding"/>
-        <item android:icon="@drawable/movie" android:title="Movies"/>
-        <item android:icon="@drawable/music" android:title="Music"/>
+        <item android:icon="@drawable/movie" android:title="Saved Videos"/>
+<!--        <item android:icon="@drawable/music" android:title="Music"/>-->
         <item android:icon="@drawable/subscription" android:title="Subscription"/>
         <item android:icon="@drawable/library" android:title="Library"/>
         <item android:icon="@drawable/sport" android:title="Sport"/>

@@ -1,106 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="16dp">
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
 
+        <!-- Profile Picture -->
         <androidx.cardview.widget.CardView
-            android:id="@+id/cardView2"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:background="@color/red"
-            android:elevation="8dp"
-            app:cardCornerRadius="75dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.19">
-
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:cardCornerRadius="75dp">
             <ImageView
                 android:id="@+id/profileImage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:srcCompat="@drawable/icon_person_svg"
-                android:scaleType="centerCrop"/>
-
+                android:src="@drawable/person"
+                android:contentDescription="Profile Image"
+                android:scaleType="fitCenter"
+                android:layout_marginBottom="16dp"
+                />
         </androidx.cardview.widget.CardView>
 
-        <TextView
-            android:id="@+id/personName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:fontFamily="monospace"
-            android:paddingLeft="20dp"
-            android:layout_marginStart="10dp"
-            android:text="Demo"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView2" />
 
+
+        <!-- User Info -->
         <TextView
-            android:id="@+id/personAge"
-            android:layout_width="match_parent"
+            android:id="@+id/userName"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:fontFamily="monospace"
-            android:paddingLeft="20dp"
-            android:layout_marginStart="10dp"
-            android:text="Age : 20"
+            android:text="Rudresh Patel"
             android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/personName" />
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"/>
 
         <TextView
-            android:id="@+id/personCourse"
+            android:id="@+id/userEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="rudreshpatel504@gmail.com"
+            android:textSize="14sp"
+            android:textColor="@android:color/darker_gray"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Stats Section -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Course : B Tech"
-            android:textSize="20dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginStart="10dp"
-            android:paddingLeft="20dp"
-            android:fontFamily="monospace"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/personAge"
-            tools:layout_editor_absoluteX="73dp"
-            tools:layout_editor_absoluteY="469dp" />
+            android:orientation="horizontal"
+            android:gravity=""
+            android:layout_marginBottom="24dp">
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="0dp"
+            <TextView
+                android:id="@+id/coursesCompleted"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Courses: 5"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/quizzesTaken"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Quizzes: 12"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Buttons -->
+        <Button
+            android:id="@+id/btnEditProfile"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="TextView"
-            app:layout_constraintEnd_toEndOf="@+id/personCourse"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/personCourse"
-            app:layout_constraintTop_toBottomOf="@+id/personCourse" />
+            android:text="Edit Profile"
+            android:layout_marginBottom="12dp"/>
 
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="392dp"
-            android:layout_height="23dp"
-            android:layout_marginTop="36dp"
-            android:layout_marginEnd="171dp"
-            android:text="TextView"
-            app:layout_constraintEnd_toEndOf="@+id/textView4"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/textView4"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        <Button
+            android:id="@+id/btnSettings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Settings"
+            android:layout_marginBottom="12dp"/>
 
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Logout"
+            android:backgroundTint="@android:color/holo_red_light"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</FrameLayout>
+    </LinearLayout>
+</ScrollView>

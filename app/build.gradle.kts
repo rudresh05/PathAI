@@ -57,6 +57,7 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.cardview)
     implementation(libs.androidx.material3.android)
+    implementation(libs.androidx.recyclerview)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -76,4 +77,9 @@ dependencies {
     // YouTube Player Library
     implementation(libs.core)
     implementation("com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.2")
+
+    //image slider
+    implementation("com.github.denzcoskun:ImageSlideshow:0.1.2")
+
+
 }

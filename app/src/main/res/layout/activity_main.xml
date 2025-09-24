@@ -8,24 +8,50 @@
     android:layout_height="match_parent"
     tools:context=".ui.MainActivity">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/red"
+        android:paddingTop="10sp"
 
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="50dp">
+
+
         <Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:backgroundTint="@color/red"
-            android:background="@color/red">
+            android:layout_marginTop="1dp"
+            android:background="@color/red"
+            android:backgroundTint="@color/red">
+
             <ImageButton
                 android:id="@+id/drawerToggleBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/menu"
-                android:background="@android:color/transparent"/>
+                android:background="@android:color/transparent"
+                android:src="@drawable/menu" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:background="@color/blue"
+                android:gravity="center"
+                android:paddingStart="20dp"
+                android:text="PathAI"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+
         </Toolbar>
 
         <FrameLayout

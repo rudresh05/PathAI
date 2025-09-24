@@ -1,0 +1,24 @@
+{
+  "courses": [
+    {
+      "id": "c001",
+      "title": "Introduction to AI",
+      "content": "Learn the basics of Artificial Intelligence, including history, applications, and key concepts."
+    },
+    {
+      "id": "c002",
+      "title": "Machine Learning Fundamentals",
+      "content": "Understand machine learning algorithms, supervised and unsupervised learning, and hands-on exercises."
+    },
+    {
+      "id": "c003",
+      "title": "Deep Learning with Neural Networks",
+      "content": "Dive into deep learning techniques using neural networks, CNNs, RNNs, and practical implementations."
+    },
+    {
+      "id": "c004",
+      "title": "Natural Language Processing",
+      "content": "Explore NLP concepts including text processing, sentiment analysis, and language models."
+    }
+  ]
+}
