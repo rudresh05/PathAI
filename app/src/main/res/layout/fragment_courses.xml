@@ -4,15 +4,47 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="8dp">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        app:cardBackgroundColor="@color/green"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        app:cardCornerRadius="10dp">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/pathai_logo"
+            android:scaleType="centerCrop"/>
+    </androidx.cardview.widget.CardView>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/et_bg"
+        android:drawableStart="@drawable/icon_search"
+        android:layout_marginBottom="10dp"
+        android:paddingLeft="10dp"
+        android:drawablePadding="10dp"
+        android:hint="Search for Courses "/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/coursesRecyclerView"
+        android:id="@+id/categoryRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:paddingBottom="8dp"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="2"/>
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager">
 
+
+    </androidx.recyclerview.widget.RecyclerView>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recentActivityRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+
+        >
+
+    </androidx.recyclerview.widget.RecyclerView>
 
 </LinearLayout>
