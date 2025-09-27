@@ -6,13 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.compose.ui.window.Dialog
 import androidx.fragment.app.Fragment
 import com.emreesen.sntoast.SnToast
 import com.emreesen.sntoast.Type
 import com.rudresh05.pathai.R
 import com.rudresh05.pathai.databinding.FragmentProfileBinding
 import com.shashank.sony.fancytoastlib.FancyToast
+import taimoor.sultani.sweetalert2.Sweetalert
 
 
 class ProfileFragment: Fragment(R.layout.fragment_profile) {
@@ -30,11 +30,16 @@ class ProfileFragment: Fragment(R.layout.fragment_profile) {
         binding.userName.text = "Rudresh Patel"
         binding.userEmail.text = "rudreshpatel504@gmail.com"
         binding.coursesCompleted.text = "Courses: 5"
-        binding.quizzesTaken.text = "Quizzes: 12"
+        binding.quizzesTaken.text = "Quizzes: 12"  
 
         // Button actions
         binding.btnEditProfile.setOnClickListener {
-            FancyToast.makeText(requireContext(),"Hello World !",FancyToast.LENGTH_LONG,FancyToast.WARNING,true).show()
+           // FancyToast.makeText(requireContext(),"Hello World !",FancyToast.LENGTH_LONG,FancyToast.WARNING,true).show()
+            Sweetalert(requireContext(), Sweetalert.WARNING_TYPE)
+                .setTitleText("Are you sure?")
+                .setContentText("Won't be able to recover this file!")
+                .setConfirmText("Yes,delete it!")
+                .show()
         }
 
         binding.btnSettings.setOnClickListener {

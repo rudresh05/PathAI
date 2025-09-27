@@ -87,5 +87,7 @@ dependencies {
     //custom toast builder
     implementation("com.github.emreesen27:Android-Custom-Toast-Message:1.0.5")
 
+    //sweet alert dialog
+    implementation("com.github.taimoorsultani:android-sweetalert2:2.0.2")
 
 }
