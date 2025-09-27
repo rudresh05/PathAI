@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.rudresh05.pathai.R
 import com.rudresh05.pathai.databinding.FragmentProfileBinding
+import com.shashank.sony.fancytoastlib.FancyToast
 
 class ProfileFragment: Fragment(R.layout.fragment_profile) {
 
@@ -28,7 +29,7 @@ class ProfileFragment: Fragment(R.layout.fragment_profile) {
 
         // Button actions
         binding.btnEditProfile.setOnClickListener {
-            Toast.makeText(requireContext(), "Edit Profile clicked", Toast.LENGTH_SHORT).show()
+            FancyToast.makeText(requireContext(),"Hello World !",FancyToast.LENGTH_LONG,FancyToast.WARNING,true).show()
         }
 
         binding.btnSettings.setOnClickListener {

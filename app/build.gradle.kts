@@ -80,6 +80,7 @@ dependencies {
 
     //image slider
     implementation("com.github.denzcoskun:ImageSlideshow:0.1.2")
+    implementation("io.github.shashank02051997:FancyToast:2.0.2")
 
 
 }
