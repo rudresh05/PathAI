@@ -11,7 +11,7 @@ import com.rudresh05.pathai.databinding.ItemCourseBinding
 import com.rudresh05.pathai.databinding.ListItemVideoBinding
 import com.rudresh05.pathai.models.dataModels.Course
 
-class CourseAdapter(var context : Context, var cList: ArrayList<Course>): RecyclerView.Adapter<CourseAdapter.CourseViewHolder>() {
+class CourseAdapter(var context : Context, var cList: ArrayList<Course>, private val onItemClick:(Course) -> Unit): RecyclerView.Adapter<CourseAdapter.CourseViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -26,6 +26,9 @@ class CourseAdapter(var context : Context, var cList: ArrayList<Course>): Recycl
     ) {
         holder.cTittle.text =  cList[position].title;
         Glide.with(context).load(cList[position].image).placeholder(R.drawable.person).into(holder.cImg)
+        holder.itemView.setOnClickListener {
+            onItemClick(cList[position])
+        }
     }
 
     override fun getItemCount(): Int {

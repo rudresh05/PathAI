@@ -4,12 +4,13 @@ import android.R
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.rudresh05.pathai.databinding.ItemCategoryBinding
 import com.rudresh05.pathai.models.dataModels.Course
 
-class CategoryAdapter(var context : Context, var cList: ArrayList<Course>): RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
+class CategoryAdapter(var context : Context, var cList: ArrayList<Course>, private val onItemClick:(Course) -> Unit): RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -24,7 +25,9 @@ class CategoryAdapter(var context : Context, var cList: ArrayList<Course>): Recy
     ) {
        holder.binding.ivCateCourseTitle.text = cList[position].title
         Glide.with(context).load(cList[position].image).placeholder(com.rudresh05.pathai.R.drawable.person).into(holder.cImg)
-
+holder.itemView.setOnClickListener {
+    onItemClick(cList[position])
+}
 
     }
 
