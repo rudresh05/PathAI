@@ -80,7 +80,12 @@ dependencies {
 
     //image slider
     implementation("com.github.denzcoskun:ImageSlideshow:0.1.2")
+
+    //fancy toast builder
     implementation("io.github.shashank02051997:FancyToast:2.0.2")
+
+    //custom toast builder
+    implementation("com.github.emreesen27:Android-Custom-Toast-Message:1.0.5")
 
 
 }

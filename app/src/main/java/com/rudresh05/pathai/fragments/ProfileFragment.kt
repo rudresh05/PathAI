@@ -6,9 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.emreesen.sntoast.SnToast
+import com.emreesen.sntoast.Type
 import com.rudresh05.pathai.R
 import com.rudresh05.pathai.databinding.FragmentProfileBinding
 import com.shashank.sony.fancytoastlib.FancyToast
+
 
 class ProfileFragment: Fragment(R.layout.fragment_profile) {
 
@@ -33,7 +36,17 @@ class ProfileFragment: Fragment(R.layout.fragment_profile) {
         }
 
         binding.btnSettings.setOnClickListener {
-            Toast.makeText(requireContext(), "Settings clicked", Toast.LENGTH_SHORT).show()
+            SnToast.Builder()
+                .context(requireContext())
+                .type(Type.SUCCESS)
+                .message("Success !") //.cancelable(false or true) Optional Default: False
+                // .iconSize(int size) Optional Default: 34dp
+                // .textSize(int size) Optional Default 18sp
+                // .animation(false or true) Optional Default: True
+                // .duration(int ms) Optional Default: 3000ms
+                // .backgroundColor(R.color.example) Default: It is filled according to the toast type. If an assignment is made, the assigned value is used
+                // .icon(R.drawable.example) Default: It is filled according to the toast type. If an assignment is made, the assigned value is used
+                .build()
         }
 
         binding.btnLogout.setOnClickListener {
