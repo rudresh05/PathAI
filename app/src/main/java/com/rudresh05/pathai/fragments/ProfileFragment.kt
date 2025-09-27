@@ -1,10 +1,12 @@
 package com.rudresh05.pathai.fragments
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.compose.ui.window.Dialog
 import androidx.fragment.app.Fragment
 import com.emreesen.sntoast.SnToast
 import com.emreesen.sntoast.Type
@@ -50,7 +52,24 @@ class ProfileFragment: Fragment(R.layout.fragment_profile) {
         }
 
         binding.btnLogout.setOnClickListener {
-            Toast.makeText(requireContext(), "Logout clicked", Toast.LENGTH_SHORT).show()
+           // Toast.makeText(requireContext(), "Logout clicked", Toast.LENGTH_SHORT).show()
+            var builder = AlertDialog.Builder(requireContext())
+            builder.setTitle("Log out")
+            builder.setMessage(R.string.alter_des)
+            builder.setIcon(R.drawable.logout)
+            builder.setPositiveButton("YES"){dialog, which ->
+                Toast.makeText(requireContext(), "Logged out SuccessFully", Toast.LENGTH_SHORT).show()
+            }
+            builder.setNegativeButton("NO"){dialog, which ->
+                Toast.makeText(requireContext(), "No Logout", Toast.LENGTH_SHORT).show()
+            }
+            builder.setNeutralButton("CANCEL"){dialog, which ->
+                Toast.makeText(requireContext(), " Canceled SuccessFully", Toast.LENGTH_SHORT).show()
+            }
+
+            val alertDialog: AlertDialog = builder.create()
+            alertDialog.setCancelable(false)
+            alertDialog.show()
             // Future: FirebaseAuth.getInstance().signOut()
         }
 
