@@ -14,9 +14,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PathAI">
         <activity
+            android:name=".ui.SignupActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.AuthActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.PlayerActivity"
             android:exported="false"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".SplashScreen"
             android:exported="true">
@@ -28,7 +37,7 @@
         </activity>
         <activity
             android:name=".ui.MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>
