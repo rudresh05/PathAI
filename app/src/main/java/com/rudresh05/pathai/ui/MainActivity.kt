@@ -1,14 +1,16 @@
 package com.rudresh05.pathai.ui
 
 import android.os.Bundle
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.storage.FirebaseStorage
 import com.rudresh05.pathai.R
 import com.rudresh05.pathai.databinding.ActivityMainBinding
 import com.rudresh05.pathai.fragments.CoursesFragment
@@ -22,6 +24,7 @@ class MainActivity : AppCompatActivity() {
 
     private val mainViewModel: MainViewModel by viewModels()
     private lateinit var binding: ActivityMainBinding
+    lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,6 +62,23 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        val auth = FirebaseAuth.getInstance()
+        val storageRef = FirebaseStorage.getInstance()
+        val headerView = binding.navigationView.getHeaderView(0)
+        val image = headerView.findViewById<ImageView>(R.id.navUserImg)
+        val name = headerView.findViewById<TextView>(R.id.navUserName)
+        val email = headerView.findViewById<TextView>(R.id.navUserEmail)
+        val currentUser = auth.currentUser
+        if(currentUser!= null) {
+            storageRef.getReference("profile_images/${auth.currentUser?.uid}").downloadUrl.addOnSuccessListener { uri ->
+                Glide.with(this)
+                    .load(uri)
+                    .placeholder(R.drawable.doreman)
+                    .into(image)
+            }
+            name.text = currentUser.displayName
+            email.text = currentUser.email
+        }
         // Drawer logic
         binding.drawerToggleBtn.setOnClickListener {
             binding.drawerLayout.openDrawer(GravityCompat.START)
@@ -85,3 +105,5 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
+
+

@@ -32,9 +32,6 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val imageList = ArrayList<SlideModel>() // Create image list
 
-// imageList.add(SlideModel("String Url" or R.drawable)
-// imageList.add(SlideModel("String Url" or R.drawable, "title") You can add title
-
         imageList.add(SlideModel("https://www.bluekraft.in/wp-content/uploads/2025/03/what-is-ai-1.jpg", ScaleTypes.CENTER_CROP))
         imageList.add(SlideModel("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSALsRWjeg7Gqe-nFsTKOPMM13xnSOYVQtpexc2Tmf_VYIlxazfPHtPrLiiPo_NNemcA0&usqp=CAU", ScaleTypes.CENTER_CROP))
         imageList.add(SlideModel("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQrPtduF5CJ3mK344eTZ53hspstXFJ-iEskA&s", ScaleTypes.CENTER_CROP))

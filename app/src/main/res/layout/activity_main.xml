@@ -4,9 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
-    tools:openDrawer="start"
     android:layout_height="match_parent"
-    tools:context=".ui.MainActivity">
+    android:background="#1143D0"
+    android:backgroundTint="#1143D0"
+    tools:context=".ui.MainActivity"
+    tools:openDrawer="start">
 
     <TextView
         android:layout_width="match_parent"
@@ -17,6 +19,7 @@
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="20sp" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -58,21 +61,21 @@
             android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-
-
             android:layout_above="@+id/bottomNavigationView"
-
             android:layout_below="@id/toolbar"
             android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"/>
+            android:layout_alignParentEnd="true" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavigationView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            app:menu="@menu/menu"
-            app:itemIconTint="@color/black" />
+            android:background="#1143D0"
+            android:backgroundTint="#1143D0"
+            app:itemIconTint="@color/black"
+            app:itemTextColor="@color/white"
+            app:menu="@menu/menu" />
 
         <!-- Navigation Drawer -->
 
@@ -84,8 +87,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:menu="@menu/nav_menu"
         app:headerLayout="@layout/nav_header"
-       />
+        app:menu="@menu/nav_menu" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

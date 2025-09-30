@@ -45,10 +45,12 @@ class CoursesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         var clist = ArrayList<Course>()
-        clist.add(Course(id = "1",
+        clist.add(Course(
+            id = "1",
             title = "ANDROID",
             image = "https://corizo.in/wp-content/uploads/2024/11/Android-logo.jpg",
-            content="https://developer.android.com/get-started/overview"))
+            content = "https://developer.android.com/get-started/overview",
+        ))
         clist.add(Course(id = "2",
             title = "DSA",
             image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2tmKCyWGcC5wCCSGkrk6xYd0tiqysvrIsoQ&s",
@@ -81,69 +83,20 @@ class CoursesFragment : Fragment() {
 
         var recyclerView = binding.recentActivityRecycler
         var adapter = CourseAdapter(requireContext(),clist){course ->
-           // Toast.makeText(requireContext(),"Course Clicked ${course.title}", Toast.LENGTH_LONG).show()
-
-            // implement web view here
-            val webView = binding.courseWebView
-            binding.courseWebView.settings.apply {
-                javaScriptEnabled = true           // JavaScript enable
-                builtInZoomControls = true         // Zoom buttons enable
-                displayZoomControls = false        // Default zoom buttons hide (optional, pinch still kaam karega)
-                useWideViewPort = true             // Content fit screen properly
-                loadWithOverviewMode = true        // Fit content to screen
-            }
-
-            webView.webViewClient = WebViewClient()
-            webView.visibility = View.VISIBLE
-            binding.categoryRecyclerView.visibility = View.GONE
-            binding.recentActivityRecycler.visibility = View.GONE
-            binding.linear1.visibility = View.GONE
-            binding.linear2.visibility = View.GONE
-            binding.cardHeader.visibility = View.GONE
-            binding.editText.visibility = View.GONE
-            binding.ivLogo.visibility = View.GONE
-            binding.courseWebView.visibility = View.VISIBLE
-
-
-
-            binding.courseWebView.loadUrl(course.content ?: "https://www.geeksforgeeks.org/")
+        //    Toast.makeText(requireContext(),"Course Clicked ${course.title}", Toast.LENGTH_LONG).show()
+            openCourseInWebView(course.content)
         }
         recyclerView.adapter = adapter
 
         var cateRecycler = binding.categoryRecyclerView
         var catAdapter = CategoryAdapter(requireContext(),clist){course ->
            // Toast.makeText(requireContext(), "item click ${course.title}", Toast.LENGTH_SHORT).show()
-
-            // implement web view here
-            val webView = binding.courseWebView
-            binding.courseWebView.settings.apply {
-                javaScriptEnabled = true           // JavaScript enable
-                builtInZoomControls = true         // Zoom buttons enable
-                displayZoomControls = false        // Default zoom buttons hide (optional, pinch still kaam karega)
-                useWideViewPort = true             // Content fit screen properly
-                loadWithOverviewMode = true        // Fit content to screen
-            }
-
-            webView.webViewClient = WebViewClient()
-            webView.visibility = View.VISIBLE
-            binding.categoryRecyclerView.visibility = View.GONE
-            binding.recentActivityRecycler.visibility = View.GONE
-            binding.linear1.visibility = View.GONE
-            binding.linear2.visibility = View.GONE
-            binding.cardHeader.visibility = View.GONE
-            binding.editText.visibility = View.GONE
-            binding.ivLogo.visibility = View.GONE
-            binding.courseWebView.visibility = View.VISIBLE
-
-
-
-            binding.courseWebView.loadUrl(course.content ?: "https://www.geeksforgeeks.org/")
-
+            openCourseInWebView(course.content)
 
         }
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner){
             if(binding.courseWebView.isVisible){
-                binding.courseWebView.visibility = View.VISIBLE
+                binding.courseWebView.visibility = View.GONE
                 binding.categoryRecyclerView.visibility = View.VISIBLE
                 binding.recentActivityRecycler.visibility = View.VISIBLE
                 binding.linear1.visibility = View.VISIBLE
@@ -162,6 +115,30 @@ class CoursesFragment : Fragment() {
 
         }
     }
+
+    @SuppressLint("SetJavaScriptEnabled")
+    private fun openCourseInWebView(url: String?) {
+        binding.courseWebView.settings.apply {
+            javaScriptEnabled = true
+            builtInZoomControls = true
+            displayZoomControls = false
+            useWideViewPort = true
+            loadWithOverviewMode = true
+        }
+        binding.courseWebView.webViewClient = WebViewClient()
+
+        binding.courseWebView.visibility = View.VISIBLE
+        binding.categoryRecyclerView.visibility = View.GONE
+        binding.recentActivityRecycler.visibility = View.GONE
+        binding.linear1.visibility = View.GONE
+        binding.linear2.visibility = View.GONE
+        binding.cardHeader.visibility = View.GONE
+        binding.editText.visibility = View.GONE
+        binding.ivLogo.visibility = View.GONE
+
+        binding.courseWebView.loadUrl(url ?: "https://www.geeksforgeeks.org/")
+    }
+
 
 
 

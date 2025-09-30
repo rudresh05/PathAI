@@ -9,6 +9,21 @@
     tools:context=".ui.SignupActivity">
 
     <EditText
+        android:id="@+id/nameSignup"
+        android:layout_width="280dp"
+        android:layout_height="43dp"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/edit_text_shape"
+        android:ems="10"
+        android:hint="@string/enter_your_name"
+        android:inputType="text"
+        android:paddingStart="15dp"
+        android:text=""
+        app:layout_constraintBottom_toTopOf="@+id/emailSignup"
+        app:layout_constraintEnd_toEndOf="@+id/emailSignup"
+        app:layout_constraintStart_toStartOf="@+id/emailSignup" />
+
+    <EditText
         android:id="@+id/emailSignup"
         android:layout_width="280dp"
         android:layout_height="43dp"

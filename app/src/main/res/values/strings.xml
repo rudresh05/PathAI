@@ -6,5 +6,6 @@
     <string name="alter_des"> Are you sure you want to log out?</string>
     <string name="enter_your_email">enter your email</string>
     <string name="enter_your_password">enter your password</string>
+    <string name="enter_your_name">enter your name</string>
 
 </resources>

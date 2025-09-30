@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.userProfileChangeRequest
 import com.rudresh05.pathai.R
 import com.rudresh05.pathai.databinding.ActivitySignupBinding
 import com.shashank.sony.fancytoastlib.FancyToast
@@ -30,12 +31,13 @@ class SignupActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
         binding.signup.setOnClickListener {
+            val userName = binding.nameSignup.text.toString()
             val email = binding.emailSignup.text.toString()
             val password = binding.passwordSignup.text.toString()
             val confPassword = binding.confirmPassword.text.toString()
 
 
-            if(email.isEmpty() || password.isEmpty() || confPassword.isEmpty()){
+            if(userName.isEmpty() || email.isEmpty() || password.isEmpty() || confPassword.isEmpty()){
                 Toast.makeText(this, "Please fill all the fields", Toast.LENGTH_SHORT).show()
             }
             else if(password != confPassword){
@@ -45,9 +47,22 @@ class SignupActivity : AppCompatActivity() {
                 auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener {
                     task ->
                     if(task.isSuccessful){
-                    Toast.makeText(this, "Sign up Successful", Toast.LENGTH_SHORT).show()
-                        startActivity((Intent(this, LoginActivity::class.java)))
-                        finish()
+                        val user = auth.currentUser
+                        val profileUpdates = userProfileChangeRequest {
+                            displayName = userName
+                        }
+
+                        user?.updateProfile(profileUpdates)?.addOnCompleteListener { profileTask ->
+                            if(profileTask.isSuccessful){
+                                Toast.makeText(this, "Sign up Successful", Toast.LENGTH_SHORT).show()
+                                startActivity(Intent(this, MainActivity::class.java))
+                                finish()
+                            }
+                            else{
+                                Toast.makeText(this, "Sign up Failed : ${profileTask.exception?.message}", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+
                     }
                     else{
                         Toast.makeText(this, "Sign up Failed : ${task.exception?.message}", Toast.LENGTH_SHORT).show()
