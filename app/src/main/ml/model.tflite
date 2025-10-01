@@ -1,0 +1,6 @@
+val fileDescriptor = context.assets.openFd("cs_video_model.tflite")
+val inputStream = FileInputStream(fileDescriptor.fileDescriptor)
+val fileChannel = inputStream.channel
+val mappedByteBuffer: MappedByteBuffer =
+    fileChannel.map(FileChannel.MapMode.READ_ONLY, fileDescriptor.startOffset, fileDescriptor.declaredLength)
+val interpreter = Interpreter(mappedByteBuffer)
