@@ -13,16 +13,16 @@ import com.rudresh05.pathai.models.VideoItem // Import the data class from our A
 // Import our simple Video data class.
  // Import the data class from our API response.
 
-/**
- * The Repository is now upgraded to fetch data from the network.
- * It's the single source of truth for our app's data.
- */
+
+ // The Repository is now upgraded to fetch data from the network.
+// It's the single source of truth for our app's data.
+
 class VideoRepository {
 
-    /**
-     * This new function searches for videos using the YouTube API.
-     * It's a 'suspend' function, so it will run in the background.
-     */
+
+     // This new function searches for videos using the YouTube API.
+     // It's a 'suspend' function, so it will run in the background.
+
     suspend fun searchVideos(query: String): List<VideoModel> {
         // We use a try-catch block to handle potential network errors (like no internet).
         return try {
@@ -41,9 +41,9 @@ class VideoRepository {
         }
     }
 
-    /**
-     * A private helper function to convert the API's VideoItem into our app's Video class.
-     */
+
+    //  A private helper function to convert the API's VideoItem into our app's Video class.
+
     private fun mapToVideo(item: VideoItem): VideoModel {
         return VideoModel(
             id = item.id.videoId,

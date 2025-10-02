@@ -8,9 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.rudresh05.pathai.R
 import com.rudresh05.pathai.adapters.VideoAdapter
 import com.rudresh05.pathai.databinding.FragmentSearchBinding
 import com.rudresh05.pathai.models.MainViewModel
@@ -77,11 +74,6 @@ class SearchFragment : Fragment() {
 
         })
 
-
     }
 
-
-    companion object {
-
-    }
 }

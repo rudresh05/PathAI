@@ -32,8 +32,6 @@ class ProfileFragment: Fragment() {
         auth = FirebaseAuth.getInstance()
         var storageRef = FirebaseStorage.getInstance()
 
-
-
         // set user name and email in profile fragment
         val currentUser = auth.currentUser
        if(currentUser != null){

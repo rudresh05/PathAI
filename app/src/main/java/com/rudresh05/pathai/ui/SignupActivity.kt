@@ -62,7 +62,6 @@ class SignupActivity : AppCompatActivity() {
                                 Toast.makeText(this, "Sign up Failed : ${profileTask.exception?.message}", Toast.LENGTH_SHORT).show()
                             }
                         }
-
                     }
                     else{
                         Toast.makeText(this, "Sign up Failed : ${task.exception?.message}", Toast.LENGTH_SHORT).show()

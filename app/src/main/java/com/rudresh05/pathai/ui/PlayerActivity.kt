@@ -32,9 +32,6 @@ class PlayerActivity : AppCompatActivity() {
                 super.onReady(youTubePlayer)
                 youTubePlayer.loadVideo(videoId,0.toFloat())
                 youTubePlayer.play()
-
-
-
             }
         })
 

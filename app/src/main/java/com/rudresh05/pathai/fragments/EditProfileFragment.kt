@@ -9,13 +9,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.activity.OnBackPressedCallback
-import androidx.activity.OnBackPressedDispatcher
 import com.bumptech.glide.Glide
-import com.google.android.play.core.integrity.IntegrityTokenResponse
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.auth.userProfileChangeRequest
 import com.google.firebase.storage.FirebaseStorage
 import com.rudresh05.pathai.R
@@ -44,87 +39,98 @@ class EditProfileFragment : Fragment() {
         // Inflate the layout for this fragment
         return binding.root
     }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        auth = FirebaseAuth.getInstance()
+        val user = auth.currentUser
+
+        if (user != null) {
+            user.photoUrl?.let { uri ->
+                Glide.with(this)
+                    .load(uri)
+                    .placeholder(R.drawable.doreman)
+                    .into(binding.editProfileImg)
+            }
+        }
+
+
+        binding.editProfileName.setOnClickListener {
+            val firstName = binding.editProfileTextFirstName.text.toString().trim()
+            val lastName = binding.editProfileTextLastName.text.toString().trim()
+            if (firstName.isNotEmpty() && lastName.isNotEmpty()) {
+                val profileUpdates = userProfileChangeRequest {
+                    displayName = "$firstName $lastName"
+                }
+                auth.currentUser?.updateProfile(profileUpdates)
+                    ?.addOnSuccessListener {
+                        Toast.makeText(
+                            requireContext(),
+                            "Profile Name Save successfully",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                    ?.addOnFailureListener { e ->
+                        Toast.makeText(
+                            requireContext(),
+                            "failed to save ${e.message}",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+            } else {
+                Toast.makeText(requireContext(), "Please Enter Your Name", Toast.LENGTH_SHORT)
+                    .show()
+            }
+
+        }
+
+
+        binding.editProfileImgCardView.setOnClickListener {
+            chooseImage()
+        }
+
+        binding.editProfileUploadButton.setOnClickListener {
+           uploadImage()
+        }
+        }
+     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        val PICK_IMAGE_REQUEST = 101
+        if(requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.data != null){
+            selectedImageUri = data.data
+            binding.editProfileImg.setImageURI(selectedImageUri)
+        }
+    }
+
 }
-//
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//
-//        auth = FirebaseAuth.getInstance()
-//         val user = auth.currentUser
-//
-////        if(user != null){
-////            user.photoUrl?.let{ uri ->
-////                Glide.with(this)
-////                    .load(uri)
-////                    .placeholder(R.drawable.doreman)
-////                    .into(binding)
-////            }
-////        }
-//
-//        binding.up.setOnClickListener {
-//            val newName = binding.etName.text.toString().trim()
-//            if(newName.isNotEmpty()){
-//                val profileUpdates = userProfileChangeRequest {
-//                    displayName = newName
-//                }
-//                auth.currentUser?.updateProfile(profileUpdates)
-//                    ?.addOnSuccessListener {
-//                    Toast.makeText(requireContext(), "New Name Save successfully", Toast.LENGTH_SHORT).show()
-//                    }
-//                    ?.addOnFailureListener { e ->
-//                    Toast.makeText(requireContext(), "failed to save ${e.message}", Toast.LENGTH_SHORT).show()
-//                }
-//            }
-//            else{
-//                Toast.makeText(requireContext(), "Please Enter Your Name", Toast.LENGTH_SHORT).show()
-//            }
-//
-//        }
-//
-//
-//        binding.btnSelectImage.setOnClickListener {
-//            chooseImage()
-//        }
-//
-//        binding.uploadImg.setOnClickListener {
-//           uploadImage()
-//        }
-//    }
-//     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//        val PICK_IMAGE_REQUEST = 101
-//        if(requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.data != null){
-//            selectedImageUri = data.data
-//            binding.ivProfileImage.setImageURI(selectedImageUri)
-//        }
-//    }
-//}
-//
-//private fun EditProfileFragment.uploadImage() {
-//
-//    if(selectedImageUri != null){
+
+private fun EditProfileFragment.uploadImage() {
+
+    if(selectedImageUri != null){
 //        binding.mainContainer.visibility = View.GONE
 //        binding.loadingContainer.visibility = View.VISIBLE
-//        val storageRef = FirebaseStorage.getInstance().getReference("profile_images/${auth.currentUser?.uid}")
-//
-//        storageRef.putFile(selectedImageUri!!)
-//            .addOnSuccessListener {
-//                binding.ivProfileImage.setImageURI(selectedImageUri)
-//                Toast.makeText(requireContext(), "Upload SuccessFully", Toast.LENGTH_SHORT).show()
+        val storageRef = FirebaseStorage.getInstance().getReference("profile_images/${auth.currentUser?.uid}")
+
+        storageRef.putFile(selectedImageUri!!)
+            .addOnSuccessListener {
+                binding.editProfileImg.setImageURI(selectedImageUri)
+                Toast.makeText(requireContext(), "Upload SuccessFully", Toast.LENGTH_SHORT).show()
 //                binding.mainContainer.visibility = View.VISIBLE
 //                binding.loadingContainer.visibility = View.GONE
-//            }
-//            .addOnFailureListener {e ->
-//                Toast.makeText(requireContext(), "Upload Failed ${e.message}", Toast.LENGTH_SHORT).show()
-//            }
-//    }
+            }
+            .addOnFailureListener {e ->
+                Toast.makeText(requireContext(), "Upload Failed ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+}
 //
-//}
-//
-//private fun EditProfileFragment.chooseImage() {
-//    val intent = Intent()
-//    intent.type = "image/*"
-//    intent.action = Intent.ACTION_GET_CONTENT
-//    val PICK_IMAGE_REQUEST = 101
-//    startActivityForResult(Intent.createChooser(intent, "Select Image"),PICK_IMAGE_REQUEST)
-//
-//}
+private fun EditProfileFragment.chooseImage() {
+    val intent = Intent()
+    intent.type = "image/*"
+    intent.action = Intent.ACTION_GET_CONTENT
+    val PICK_IMAGE_REQUEST = 101
+    startActivityForResult(Intent.createChooser(intent, "Select Image"),PICK_IMAGE_REQUEST)
+
+}

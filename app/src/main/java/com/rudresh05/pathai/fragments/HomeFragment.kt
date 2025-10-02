@@ -27,7 +27,6 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val imageList = ArrayList<SlideModel>() // Create image list
@@ -42,11 +41,6 @@ class HomeFragment : Fragment() {
 
         val imageSlider =binding.imageSlider
         imageSlider.setImageList(imageList)
-
-    }
-
-
-    companion object {
 
     }
 }

@@ -19,10 +19,10 @@ class MainViewModel : ViewModel() {
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> get() = _isLoading
 
-    /**
-     * Yeh ek naya public function hai jise MainActivity call karegi
-     * jab user kuch search karega.
-     */
+
+     // Yeh ek naya public function hai jise MainActivity call karegi
+     // jab user kuch search karega.
+
     fun searchVideos(query: String){
 
         // viewModelScope ek coroutine launch karta hai, yaani yeh kaam background mein hoga.
