@@ -96,4 +96,7 @@ dependencies {
     //sweet alert dialog
     implementation("com.github.taimoorsultani:android-sweetalert2:2.0.2")
 
+    // Motion Toast
+    implementation("com.github.Spikeysanju:MotionToast:1.4")
+
 }
