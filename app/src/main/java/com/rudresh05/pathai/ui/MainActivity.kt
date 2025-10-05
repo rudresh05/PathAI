@@ -3,6 +3,7 @@ package com.rudresh05.pathai.ui
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -62,6 +63,43 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        binding.navigationView.setNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+
+                R.id.navHome -> {
+                    replaceFragment(HomeFragment())
+                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                }
+
+                R.id.navCourses -> {
+
+                   replaceFragment(CoursesFragment())
+                binding.drawerLayout.closeDrawer(GravityCompat.START)}
+                R.id.navTranding -> {
+                    Toast.makeText(this, "Tranding Section IMplement Later", Toast.LENGTH_SHORT).show()
+                }
+
+
+                R.id.navSavedVideos -> {
+                    Toast.makeText(this, "Saved Video section Implement Later", Toast.LENGTH_SHORT).show()
+                }
+                R.id.navSubscription -> {
+                    Toast.makeText(this, "This Part Implement Later", Toast.LENGTH_SHORT).show()
+                }
+                R.id.navLibrary -> {
+                    Toast.makeText(this, "This Part Implement Later", Toast.LENGTH_SHORT).show()
+                }
+                R.id.navSport -> {
+                    Toast.makeText(this, "This Part Implement Later", Toast.LENGTH_SHORT).show()
+                }
+                else -> false
+            }
+        true
+        }
+
+
+
+
         val auth = FirebaseAuth.getInstance()
         val storageRef = FirebaseStorage.getInstance()
         val headerView = binding.navigationView.getHeaderView(0)
@@ -79,6 +117,8 @@ class MainActivity : AppCompatActivity() {
             name.text = currentUser.displayName
             email.text = currentUser.email
         }
+
+
         // Drawer logic
         binding.drawerToggleBtn.setOnClickListener {
             binding.drawerLayout.openDrawer(GravityCompat.START)
